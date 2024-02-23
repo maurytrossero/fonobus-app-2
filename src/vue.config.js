@@ -5,5 +5,3 @@ module.exports = {
       config.resolve.alias.set('@fortawesome/free-brands-svg-icons', '@fortawesome/free-brands-svg-icons/index.js');
     }
   };
-
-  
