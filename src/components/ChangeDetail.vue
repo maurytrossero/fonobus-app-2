@@ -348,13 +348,7 @@ export default defineComponent({
 
     updateCitiesInJSON() {
       const data = { cities: this.cities };
-      let url;
-
-      if (process.env.NODE_ENV === 'production') {
-        url = 'https://fonobus-app-2.vercel.app/cities';
-      } else {
-        url = 'http://localhost:3000/cities';
-      }
+      const url = 'https://fonobus-app-2.vercel.app/cities';
 
       fetch(url, {
         method: 'PUT',
