@@ -5,9 +5,9 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// Configura CORS para permitir solicitudes desde el dominio de producción y http://localhost:8080
+// Configura CORS para permitir solicitudes solo desde el dominio de producción en Vercel
 app.use(cors({
-  origin: ['https://fonobus-app-2.vercel.app', 'http://localhost:8080'],
+  origin: 'https://fonobus-app-2.vercel.app',
   optionsSuccessStatus: 200
 }));
 
