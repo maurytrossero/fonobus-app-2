@@ -1,20 +1,19 @@
 const express = require('express');
-const cors = require('cors'); // Importa el módulo CORS
+const cors = require('cors');
 const fs = require('fs');
-const path = require('path'); // Importa el módulo path
+const path = require('path');
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
-// Configura CORS con opciones específicas para permitir solicitudes solo desde http://localhost:8080
+// Configura CORS para permitir solicitudes desde el dominio de producción y http://localhost:8080
 app.use(cors({
-  origin: 'http://localhost:8080',
-  optionsSuccessStatus: 200 // Algunos navegadores antiguos (IE11, varios SmartTVs) tienen problemas con el código de estado 204
+  origin: ['https://fonobus-app-2.vercel.app', 'http://localhost:8080'],
+  optionsSuccessStatus: 200
 }));
 
 app.use(express.json());
 
-// Resto de tu código de servidor...
-
+// Manejo de rutas
 app.get('/cities', (req, res) => {
   const filePath = path.join(__dirname, 'public', 'cities.json');
 
@@ -40,7 +39,7 @@ app.put('/cities', (req, res) => {
   });
 });
 
-// Agrega más rutas según las necesidades de tu aplicación...
+// Otras rutas y lógica del servidor...
 
 // Inicia el servidor
 app.listen(PORT, () => {
