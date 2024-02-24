@@ -347,11 +347,16 @@ export default defineComponent({
 
 
     updateCitiesInJSON() {
-      // Crear un objeto con la estructura adecuada
       const data = { cities: this.cities };
+      let url;
 
-      // Realizar una solicitud PUT al servidor para actualizar el archivo JSON
-      fetch('http://localhost:3000/cities', {
+      if (process.env.NODE_ENV === 'production') {
+        url = 'https://your-production-server-url.com/cities';
+      } else {
+        url = 'http://localhost:3000/cities';
+      }
+
+      fetch(url, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json'
@@ -369,6 +374,7 @@ export default defineComponent({
         console.error('Error al guardar los cambios en el archivo JSON:', error);
       });
     },
+
 
 
     toggleEditSection() {
