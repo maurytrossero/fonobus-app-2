@@ -351,7 +351,7 @@ export default defineComponent({
       let url;
 
       if (process.env.NODE_ENV === 'production') {
-        url = 'https://your-production-server-url.com/cities';
+        url = 'https://fonobus-app-2.vercel.app/cities';
       } else {
         url = 'http://localhost:3000/cities';
       }
